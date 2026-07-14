@@ -1,0 +1,41 @@
+.logo-wordmark {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--ink-1);
+}
+
+.logo-mark {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+    box-shadow: 0 8px 24px rgba(229, 9, 20, 0.35);
+    filter: drop-shadow(0 2px 16px rgba(229, 9, 20, 0.4));
+    transition: transform 0.3s;
+}
+
+.logo-wordmark:hover .logo-mark {
+    transform: scale(1.05);
+}
+
+.logo-mark svg {
+    width: 28px;
+    height: 28px;
+    color: #fff;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #fff, #ffb3bd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}

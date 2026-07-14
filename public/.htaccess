@@ -1,0 +1,21 @@
+# Apache — document root = /public
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Si el proyecto se sirve desde un subdirectorio, descomenta y ajusta:
+    # RewriteBase /php-iptv-player/public/
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Bloquear listado de directorios
+Options -Indexes
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
