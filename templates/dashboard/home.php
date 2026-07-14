@@ -37,7 +37,7 @@ $renderGrid = static function (array $items, string $emptyMessage): void {
             <p class="home-hero__eyebrow">Inicio</p>
             <h1 class="home-hero__title">Hola, <span><?= e($username ?? 'usuario') ?></span></h1>
             <p class="home-hero__subtitle">
-                Lo más reciente de tu catálogo IPTV: canales, películas y series desde Xtream.
+                Explora canales en vivo, películas y series para ver cuando quieras.
             </p>
         </div>
 
@@ -57,7 +57,7 @@ $renderGrid = static function (array $items, string $emptyMessage): void {
                 </span>
                 <span class="home-shortcut__body">
                     <span class="home-shortcut__title">TV en vivo</span>
-                    <span class="home-shortcut__text">Categorías y canales</span>
+                    <span class="home-shortcut__text">Canales al instante</span>
                 </span>
             </a>
             <a class="home-shortcut" href="<?= e(url('movies')) ?>">
@@ -68,7 +68,7 @@ $renderGrid = static function (array $items, string $emptyMessage): void {
                 </span>
                 <span class="home-shortcut__body">
                     <span class="home-shortcut__title">Películas</span>
-                    <span class="home-shortcut__text">Catálogo VOD</span>
+                    <span class="home-shortcut__text">Cine online</span>
                 </span>
             </a>
             <a class="home-shortcut" href="<?= e(url('series')) ?>">
@@ -79,7 +79,7 @@ $renderGrid = static function (array $items, string $emptyMessage): void {
                 </span>
                 <span class="home-shortcut__body">
                     <span class="home-shortcut__title">Series</span>
-                    <span class="home-shortcut__text">Temporadas y episodios</span>
+                    <span class="home-shortcut__text">Capítulos y temporadas</span>
                 </span>
             </a>
             <a class="home-shortcut" href="<?= e(url('profile')) ?>">
@@ -90,7 +90,7 @@ $renderGrid = static function (array $items, string $emptyMessage): void {
                 </span>
                 <span class="home-shortcut__body">
                     <span class="home-shortcut__title">Mi cuenta</span>
-                    <span class="home-shortcut__text">Suscripción</span>
+                    <span class="home-shortcut__text">Tu perfil</span>
                 </span>
             </a>
         </nav>
