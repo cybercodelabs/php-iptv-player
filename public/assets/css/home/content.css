@@ -1,0 +1,213 @@
+/* Populares = carrusel · Recomendaciones = grid (PLAYGO) */
+
+.home-popular {
+  padding: 1.5rem 0 0.5rem;
+}
+
+.home-popular__head {
+  position: relative;
+  margin-bottom: 0.35rem;
+  min-height: 40px;
+}
+
+.home-popular__title {
+  margin: 0;
+  padding-right: 5.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+}
+
+.home-popular__title b {
+  font-weight: 600;
+  color: #fff;
+}
+
+.home-popular__nav {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.home-popular__nav-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #fff;
+  opacity: 0.7;
+  width: 42px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.15s ease;
+}
+
+.home-popular__nav-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.home-popular__nav-btn:hover:not(:disabled) {
+  opacity: 1;
+}
+
+.home-popular__nav-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* Viewport + track (loop infinito estilo Owl loop) */
+.home-popular__rail {
+  overflow: hidden;
+  padding: 1.1rem 0 0.5rem;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.home-popular__rail.is-dragging {
+  cursor: grabbing;
+}
+
+.home-popular__rail.is-dragging a {
+  pointer-events: none;
+}
+
+.home-popular__track {
+  display: flex;
+  gap: 20px; /* margin: 20 de Owl en PLAYGO */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.home-popular__track .catalog-card {
+  flex: 0 0 auto;
+}
+
+/* Evita el arrastre nativo de imagen/enlace (hacía que el carrusel “volviera”) */
+.home-popular__track img,
+.home-popular__track a {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.home-content {
+  padding: 1.75rem 0 2rem;
+}
+
+.home-content__title {
+  margin: 0 0 0.85rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+}
+
+.home-content__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  list-style: none;
+  margin: 0 0 1.35rem;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.home-content__tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.65rem 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s ease;
+}
+
+.home-content__tab:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.home-content__tab.is-active {
+  color: #fff;
+}
+
+.home-content__tab.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.home-content__panel[hidden] {
+  display: none;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1rem;
+}
+
+@media (min-width: 576px) {
+  .home-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 992px) {
+  .home-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .catalog-card--big {
+    width: 230px;
+    min-width: 230px;
+  }
+
+  .catalog-card--big .catalog-card__cover {
+    height: 360px;
+  }
+}
+
+.home-empty {
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.home-empty strong {
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .home-popular__title,
+  .home-content__title {
+    font-size: 1.25rem;
+  }
+
+  .catalog-card--big {
+    width: 160px;
+    min-width: 160px;
+  }
+
+  .catalog-card--big .catalog-card__cover {
+    height: 240px;
+  }
+}

@@ -1,4 +1,16 @@
 /**
- * Scripts globales de la aplicación (esqueleto).
+ * Navegación móvil del header.
  */
-document.documentElement.classList.add('js');
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('appNav');
+
+  if (!toggle || !nav) {
+    return;
+  }
+
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});

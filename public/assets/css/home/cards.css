@@ -1,0 +1,137 @@
+/* Tarjetas estilo PLAYGO */
+
+.catalog-card {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.catalog-card--big {
+  width: 210px;
+  min-width: 210px;
+}
+
+.catalog-card__cover {
+  position: relative;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #181818;
+  aspect-ratio: 2 / 3;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.catalog-card--big .catalog-card__cover {
+  height: 320px;
+  aspect-ratio: auto;
+}
+
+.catalog-card__img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.catalog-card__img.is-broken {
+  display: none;
+}
+
+/* Fondo neutro si no hay imagen (sin título encima) */
+.catalog-card__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: none;
+  background: linear-gradient(160deg, rgba(229, 9, 20, 0.18), #1a1a1a 55%, #121212);
+}
+
+.catalog-card__fallback.is-visible {
+  display: block;
+}
+
+.catalog-card__play {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.catalog-card:hover .catalog-card__play {
+  opacity: 1;
+}
+
+.catalog-card__play-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(229, 9, 20, 0.45);
+}
+
+.catalog-card__play-icon svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 2px;
+}
+
+.catalog-card__content {
+  padding-top: 0.65rem;
+}
+
+.catalog-card__title {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.catalog-card__rate {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.catalog-card__star {
+  color: #ffd700;
+  margin: 0 0.15rem;
+}
+
+@media (min-width: 992px) {
+  .catalog-card--big {
+    width: 230px;
+    min-width: 230px;
+  }
+
+  .catalog-card--big .catalog-card__cover {
+    height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .catalog-card--big {
+    width: 160px;
+    min-width: 160px;
+  }
+
+  .catalog-card--big .catalog-card__cover {
+    height: 240px;
+  }
+}

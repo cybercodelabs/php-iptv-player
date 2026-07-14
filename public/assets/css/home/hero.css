@@ -1,0 +1,129 @@
+/* Hero de inicio — compacto, estilo streaming */
+
+.home-hero {
+  position: relative;
+  padding: 1.75rem 0 0.75rem;
+  overflow: hidden;
+}
+
+.home-hero__glow {
+  position: absolute;
+  inset: -30% 30% auto -5%;
+  height: 280px;
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.22), transparent 68%);
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.home-hero__copy {
+  max-width: 40rem;
+}
+
+.home-hero__eyebrow {
+  margin: 0 0 0.4rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-hero__title {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.home-hero__title span {
+  color: var(--accent);
+}
+
+.home-hero__subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.home-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.home-shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.9rem 0.55rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.home-shortcut:hover {
+  transform: translateY(-1px);
+  border-color: rgba(229, 9, 20, 0.5);
+  background: rgba(229, 9, 20, 0.12);
+}
+
+.home-shortcut__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(229, 9, 20, 0.18);
+  color: #ffb4bc;
+  flex-shrink: 0;
+}
+
+.home-shortcut__icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.home-shortcut__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  min-width: 0;
+}
+
+.home-shortcut__title {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.home-shortcut__text {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .home-shortcut {
+    flex: 1 1 calc(50% - 0.55rem);
+    border-radius: 14px;
+    padding: 0.7rem;
+  }
+
+  .home-shortcut__text {
+    white-space: normal;
+  }
+}
