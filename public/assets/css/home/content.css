@@ -153,8 +153,25 @@
   background: var(--accent);
 }
 
+.home-content__panels {
+  position: relative;
+}
+
+.home-content__panel {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  pointer-events: none;
+}
+
+.home-content__panel.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 .home-content__panel[hidden] {
-  display: none;
+  display: none !important;
 }
 
 .home-grid {

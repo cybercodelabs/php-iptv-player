@@ -4,16 +4,12 @@
  * @var list<array<string, mixed>> $popular
  * @var list<array<string, mixed>> $movies
  * @var list<array<string, mixed>> $series
- * @var list<array<string, mixed>> $premieres
- * @var list<array<string, mixed>> $recent
  * @var string|null $catalogError
  */
 
 $popular = $popular ?? [];
 $movies = $movies ?? [];
 $series = $series ?? [];
-$premieres = $premieres ?? [];
-$recent = $recent ?? [];
 $catalogError = $catalogError ?? null;
 
 $renderGrid = static function (array $items, string $emptyMessage): void {
@@ -141,21 +137,15 @@ $renderGrid = static function (array $items, string $emptyMessage): void {
         <div class="home-content__tabs" role="tablist" aria-label="Recomendaciones">
             <button type="button" class="home-content__tab is-active" role="tab" aria-selected="true" data-tab="movies">Películas</button>
             <button type="button" class="home-content__tab" role="tab" aria-selected="false" data-tab="series">Series</button>
-            <button type="button" class="home-content__tab" role="tab" aria-selected="false" data-tab="premieres">Estrenos</button>
-            <button type="button" class="home-content__tab" role="tab" aria-selected="false" data-tab="recent">Recién agregados</button>
         </div>
 
-        <div class="home-content__panel" data-panel="movies" role="tabpanel">
-            <?php $renderGrid($movies, 'No se encontraron películas en el catálogo.'); ?>
-        </div>
-        <div class="home-content__panel" data-panel="series" role="tabpanel" hidden>
-            <?php $renderGrid($series, 'No se encontraron series en el catálogo.'); ?>
-        </div>
-        <div class="home-content__panel" data-panel="premieres" role="tabpanel" hidden>
-            <?php $renderGrid($premieres, 'No hay estrenos para mostrar.'); ?>
-        </div>
-        <div class="home-content__panel" data-panel="recent" role="tabpanel" hidden>
-            <?php $renderGrid($recent, 'No hay títulos recién agregados.'); ?>
+        <div class="home-content__panels">
+            <div class="home-content__panel is-active" data-panel="movies" role="tabpanel">
+                <?php $renderGrid($movies, 'No se encontraron películas en el catálogo.'); ?>
+            </div>
+            <div class="home-content__panel" data-panel="series" role="tabpanel" hidden>
+                <?php $renderGrid($series, 'No se encontraron series en el catálogo.'); ?>
+            </div>
         </div>
     </div>
 </section>

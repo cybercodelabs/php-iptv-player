@@ -1,5 +1,5 @@
 /**
- * Tabs de recomendaciones (estilo PLAYGO content__tabs).
+ * Tabs de recomendaciones (Películas / Series) con fade al cambiar.
  */
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('[data-home-tabs]');
@@ -7,15 +7,35 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const buttons = root.querySelectorAll('[data-tab]');
-  const panels = root.querySelectorAll('[data-panel]');
+  const buttons = Array.from(root.querySelectorAll('[data-tab]'));
+  const panels = Array.from(root.querySelectorAll('[data-panel]'));
+  const FADE_MS = 220;
+  let busy = false;
+
+  const showPanel = (panel) => {
+    panel.hidden = false;
+    // Forzar reflow para que la transición parta desde opacity 0
+    void panel.offsetWidth;
+    panel.classList.add('is-active');
+  };
+
+  const hidePanel = (panel) => new Promise((resolve) => {
+    panel.classList.remove('is-active');
+
+    window.setTimeout(() => {
+      panel.hidden = true;
+      resolve();
+    }, FADE_MS);
+  });
 
   buttons.forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       const id = button.getAttribute('data-tab');
-      if (!id) {
+      if (!id || busy || button.classList.contains('is-active')) {
         return;
       }
+
+      busy = true;
 
       buttons.forEach((btn) => {
         const active = btn === button;
@@ -23,9 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.setAttribute('aria-selected', active ? 'true' : 'false');
       });
 
-      panels.forEach((panel) => {
-        panel.hidden = panel.getAttribute('data-panel') !== id;
-      });
+      const current = panels.find((panel) => panel.classList.contains('is-active'));
+      const next = panels.find((panel) => panel.getAttribute('data-panel') === id);
+
+      if (current && current !== next) {
+        await hidePanel(current);
+      }
+
+      if (next) {
+        showPanel(next);
+      }
+
+      busy = false;
     });
   });
 });

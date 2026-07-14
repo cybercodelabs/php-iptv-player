@@ -43,8 +43,6 @@ final class HomeController
             'popular' => $catalog['popular'],
             'movies' => $catalog['movies'],
             'series' => $catalog['series'],
-            'premieres' => $catalog['premieres'],
-            'recent' => $catalog['recent'],
             'catalogError' => $catalog['error'],
         ]);
     }
