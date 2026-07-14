@@ -133,6 +133,26 @@ document.addEventListener('DOMContentLoaded', () => {
       .map((item) => ({ ...item, typeLabel }));
   };
 
+  const buildFacts = (item) => {
+    const facts = [];
+    facts.push(`<span class="search-modal__badge">${escapeHtml(item.typeLabel)}</span>`);
+
+    if (item.year) {
+      facts.push(`<span>${escapeHtml(String(item.year))}</span>`);
+    }
+    if (item.rating) {
+      facts.push(`<span class="search-modal__rating"><span aria-hidden="true">★</span> ${escapeHtml(String(item.rating))}</span>`);
+    }
+    if (item.duration) {
+      facts.push(`<span>${escapeHtml(String(item.duration))}</span>`);
+    }
+    if (item.genre) {
+      facts.push(`<span>${escapeHtml(String(item.genre))}</span>`);
+    }
+
+    return facts.join('<span class="search-modal__dot" aria-hidden="true">·</span>');
+  };
+
   const renderResults = (items, query) => {
     if (normalize(query).length < 2) {
       results.innerHTML = '<p class="search-modal__hint">Escribe al menos 2 caracteres para buscar en películas y series.</p>';
@@ -155,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${thumb}
             <span class="search-modal__meta">
               <span class="search-modal__name">${escapeHtml(item.title)}</span>
-              <span class="search-modal__type">${escapeHtml(item.typeLabel)}</span>
+              <span class="search-modal__facts">${buildFacts(item)}</span>
             </span>
           </a>
         </li>
