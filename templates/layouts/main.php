@@ -10,6 +10,7 @@ $username = \App\Infrastructure\Session\Session::username();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= e(($title ?? '') . ' · ' . $appName) ?></title>
+    <link rel="icon" href="<?= e(asset('img/favicon.ico')) ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= e(asset('css/app.css')) ?>">
 </head>
 <body class="app-body">

@@ -119,7 +119,7 @@ $errorTitle = $errorTitle ?? 'Ocurrió un error';
                     <svg class="secure-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                     </svg>
-                    <span>Powered by <strong>CyberCode Labs</strong></span>
+                    <span>Powered by <a href="https://cybercodelabs.com.pe/" target="_blank" rel="noopener noreferrer"><strong>CyberCode Labs</strong></a></span>
                 </p>
             </form>
 

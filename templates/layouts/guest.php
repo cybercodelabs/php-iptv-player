@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="theme-color" content="#e50914">
     <title><?= e(($title ?? 'Iniciar sesión') . ' · ' . $appName) ?></title>
+    <link rel="icon" href="<?= e(asset('img/favicon.ico')) ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= e(asset('css/login/variables.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/login/base.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/login/background.css')) ?>">
