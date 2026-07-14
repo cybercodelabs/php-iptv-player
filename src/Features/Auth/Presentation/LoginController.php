@@ -47,24 +47,24 @@ final class LoginController
 
             if (!is_array($userInfo) || (int) ($userInfo['auth'] ?? 0) !== 1) {
                 $this->fail(
-                    'Datos inválidos',
-                    'No fue posible iniciar sesión. Las credenciales ingresadas no son válidas.'
+                    'Credenciales incorrectas',
+                    'El usuario o la contraseña no son válidos.'
                 );
             }
 
             $status = strtolower((string) ($userInfo['status'] ?? ''));
             if ($status === 'banned') {
                 $this->fail(
-                    'Cuenta baneada',
-                    'No fue posible iniciar sesión. La cuenta ha sido baneada. Por favor, contacte al administrador.'
+                    'Cuenta no disponible',
+                    'Tu cuenta está bloqueada. Contacta al administrador del servicio.'
                 );
             }
 
             $expDate = $userInfo['exp_date'] ?? null;
             if ($expDate !== null && $expDate !== '' && (int) $expDate > 0 && time() > (int) $expDate) {
                 $this->fail(
-                    'Cuenta expirada',
-                    'No fue posible iniciar sesión. La cuenta ha expirado. Por favor, renueve su plan.'
+                    'Suscripción vencida',
+                    'Tu plan ha expirado. Renueva tu suscripción para continuar.'
                 );
             }
 
@@ -77,10 +77,17 @@ final class LoginController
 
             Response::redirect('home');
         } catch (Throwable $e) {
-            $message = Config::get('APP_DEBUG') === 'true'
-                ? $e->getMessage()
-                : 'No se pudo conectar con el servidor IPTV.';
-            $this->fail('Error de conexión', $message);
+            $isUnavailable = (int) $e->getCode() === 503;
+            $title = $isUnavailable ? 'Sin conexión' : 'No se pudo iniciar sesión';
+            $message = $isUnavailable
+                ? 'No pudimos contactar el servidor IPTV en este momento.'
+                : 'Inténtalo de nuevo en unos segundos.';
+
+            if (Config::get('APP_DEBUG') === 'true') {
+                $message = $e->getMessage();
+            }
+
+            $this->fail($title, $message);
         }
     }
 

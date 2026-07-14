@@ -1,91 +1,67 @@
-.alert-error {
-    border-left: 4px solid var(--acc-2);
-    background: linear-gradient(90deg, #2a0003, #1D0002);
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 16px;
-    animation: fade-in .25s ease-out;
-}
+/* Aviso de error del login */
 
-.alert-row {
+.login-alert {
     display: flex;
-    gap: 10px;
-    align-items: flex-start;
+    gap: 12px;
+    align-items: center;
+    margin: 0 0 20px;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 82, 102, 0.35);
+    background:
+        linear-gradient(135deg, rgba(229, 9, 20, 0.18), rgba(20, 20, 20, 0.55) 55%),
+        rgba(18, 12, 14, 0.85);
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-.alert-icon {
-    width: 20px;
-    height: 20px;
-    color: #ffffff;
+.login-alert__icon {
     flex: 0 0 auto;
-    margin-top: 2px;
+    width: 22px;
+    height: 22px;
+    color: #ff8a95;
 }
 
-.alert-text {
-    flex: 1;
-}
-
-.alert-title {
-    margin: 0 0 2px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #ffffff;
-}
-
-.alert-message {
-    font-size: 13px;
-    color: #ffffff;
-    opacity: .95;
-    margin: 0;
-}
-
-.alert-blocked {
-    background: linear-gradient(90deg, rgba(255, 87, 34, 0.9), rgba(255, 87, 34, 0.85)) !important;
-    border-left-color: #ff5722 !important;
-    animation: pulse 2s infinite;
-}
-
-.alert-blocked .alert-title {
+.login-alert__icon svg {
+    width: 22px;
+    height: 22px;
     display: block;
-    margin-bottom: 8px;
-    font-size: 15px;
 }
 
-.progress-bar {
-    width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
-    margin-top: 10px;
-    overflow: hidden;
+.login-alert__body {
+    flex: 1;
+    min-width: 0;
 }
 
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #fff 0%, #ffeb3b 100%);
-    border-radius: 2px;
-    transition: width 1s linear;
-    animation: progress-animation 1s ease-in-out;
+.login-alert__title {
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #fff;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+.login-alert__message {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.78);
 }
 
-@keyframes progress-animation {
-    from { width: 100%; }
-    to { width: 0%; }
+.login-alert__hint {
+    margin: 8px 0 0;
+    font-size: 12px;
+    color: rgba(255, 182, 188, 0.85);
 }
 
-@keyframes fade-in {
-    from {
-        opacity: 0;
-        transform: translateY(-4px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.form.is-error .input {
+    border-color: rgba(229, 9, 20, 0.55);
 }
 
+.form.is-error .input:focus {
+    border-color: var(--brand-1);
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.18);
+}

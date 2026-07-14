@@ -16,7 +16,9 @@
 </p>
 
 <p align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=cybercodelabs.php-iptv-player" alt="visitors" />
+  <a href="https://hits.sh/github.com/cybercodelabs/php-iptv-player/">
+    <img src="https://hits.sh/github.com/cybercodelabs/php-iptv-player.svg?style=flat-square&label=Visitors&color=e50914" alt="Visitors" />
+  </a>
 </p>
 
 ---

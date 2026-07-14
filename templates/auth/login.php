@@ -18,12 +18,13 @@ $errorTitle = $errorTitle ?? 'Ocurrió un error';
             <header class="card-header">
                 <div class="logo-container">
                     <div class="logo-wordmark" aria-label="<?= e($appName) ?>">
-                        <span class="logo-mark" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </span>
+                        <img
+                            class="logo-favicon"
+                            src="<?= e(asset('img/favicon.ico')) ?>"
+                            alt="<?= e($appName) ?>"
+                            width="64"
+                            height="64"
+                        />
                         <span class="logo-text"><?= e($appName) ?></span>
                     </div>
                 </div>
@@ -32,20 +33,26 @@ $errorTitle = $errorTitle ?? 'Ocurrió un error';
             </header>
 
             <?php if (!empty($error)): ?>
-                <div class="alert-error" role="alert" aria-live="polite">
-                    <div class="alert-row">
-                        <svg class="alert-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                <?php
+                $showCredentialHint = !in_array((string) $errorTitle, ['Sin conexión', 'Cuenta no disponible', 'Suscripción vencida'], true);
+                ?>
+                <div class="login-alert" role="alert" aria-live="assertive">
+                    <div class="login-alert__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
                         </svg>
-                        <div class="alert-text">
-                            <p class="alert-title"><?= e($errorTitle) ?></p>
-                            <p class="alert-message"><?= e($error) ?></p>
-                        </div>
+                    </div>
+                    <div class="login-alert__body">
+                        <p class="login-alert__title"><?= e($errorTitle) ?></p>
+                        <p class="login-alert__message"><?= e($error) ?></p>
+                        <?php if ($showCredentialHint): ?>
+                            <p class="login-alert__hint">Revisa usuario y contraseña e inténtalo de nuevo.</p>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endif; ?>
 
-            <form method="post" action="<?= e(url('login')) ?>" id="loginForm" novalidate class="form" autocomplete="on">
+            <form method="post" action="<?= e(url('login')) ?>" id="loginForm" novalidate class="form<?= !empty($error) ? ' is-error' : '' ?>" autocomplete="on">
                 <div class="field">
                     <label class="label" for="username">Usuario</label>
                     <div class="control has-icon">

@@ -10,7 +10,6 @@ use RuntimeException;
 
 /**
  * Cliente HTTP hacia la API player_api.php de Xtream UI.
- * Esqueleto: implementar acciones en siguientes iteraciones.
  */
 final class XtreamClient
 {
@@ -44,7 +43,7 @@ final class XtreamClient
     public function request(string $username, string $password, array $query = []): array
     {
         if ($this->host === '') {
-            throw new RuntimeException('XTREAM_HOST no está configurado.');
+            throw new RuntimeException('XTREAM_HOST no está configurado.', 503);
         }
 
         $params = array_merge([
@@ -57,14 +56,24 @@ final class XtreamClient
         try {
             $response = $this->http->get($url);
         } catch (GuzzleException $e) {
-            throw new RuntimeException('Error al contactar el servidor Xtream: ' . $e->getMessage(), 0, $e);
+            throw new RuntimeException('No se pudo contactar el servidor IPTV.', 503, $e);
         }
 
-        $body = (string) $response->getBody();
-        $data = json_decode($body, true);
+        $status = $response->getStatusCode();
+        if ($status >= 500) {
+            throw new RuntimeException('El servidor IPTV no está disponible.', 503);
+        }
 
-        if (!is_array($data)) {
-            throw new RuntimeException('Respuesta inválida del servidor Xtream.');
+        $body = trim((string) $response->getBody());
+        $data = $body !== '' ? json_decode($body, true) : null;
+
+        // Xtream suele devolver vacío, [] o HTML cuando las credenciales no son válidas
+        if (!is_array($data) || $data === []) {
+            return [
+                'user_info' => [
+                    'auth' => 0,
+                ],
+            ];
         }
 
         return $data;
