@@ -35,96 +35,37 @@
   object-fit: contain;
 }
 
-.app-nav {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
-
-.app-nav__link {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.45rem 0.75rem;
-  border-radius: 999px;
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: color 0.15s ease, background 0.15s ease;
-}
-
-.app-nav__link:hover {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.app-nav__link.is-active {
-  color: #fff;
-  background: rgba(229, 9, 20, 0.18);
-  box-shadow: inset 0 0 0 1px rgba(229, 9, 20, 0.35);
-}
-
 .app-header__actions {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
-.app-icon-btn {
+/* Iconos sin caja contenedora (estilo PLAYGO header__search / user) */
+.app-header__icon {
+  appearance: none;
   width: 40px;
   height: 40px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.82);
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
 
-.app-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.18);
+.app-header__icon:hover {
+  color: #fff;
+  opacity: 1;
 }
 
-.app-icon-btn svg {
-  width: 18px;
-  height: 18px;
-}
-
-.app-nav-toggle {
-  display: none;
-}
-
-@media (max-width: 860px) {
-  .app-nav-toggle {
-    display: grid;
-  }
-
-  .app-nav {
-    display: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: var(--header-h);
-    background: rgba(12, 12, 12, 0.96);
-    border-bottom: 1px solid var(--border);
-    padding: 0.75rem 1.25rem 1rem;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.25rem;
-  }
-
-  .app-nav.is-open {
-    display: flex;
-  }
-
-  .app-nav__link {
-    border-radius: 10px;
-  }
+.app-header__icon svg {
+  width: 22px;
+  height: 22px;
 }

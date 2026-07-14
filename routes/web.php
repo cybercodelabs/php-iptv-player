@@ -13,6 +13,7 @@ use App\Features\Profile\Presentation\ProfileController;
 use App\Features\Series\Presentation\EpisodeController;
 use App\Features\Series\Presentation\SerieController;
 use App\Features\Series\Presentation\SeriesController;
+use App\Features\Search\Presentation\SearchCatalogController;
 use App\Infrastructure\Http\Router;
 use App\Infrastructure\Http\Response;
 use App\Infrastructure\Session\Session;
@@ -38,5 +39,6 @@ $router->get('/series', new SeriesController());
 $router->get('/serie', new SerieController());
 $router->get('/episode', new EpisodeController());
 $router->get('/profile', new ProfileController());
+$router->get('/api/search/catalog', new SearchCatalogController());
 
 return $router;

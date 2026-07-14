@@ -17,4 +17,7 @@
             ?>
         </dd>
     </dl>
+    <p class="mt-4">
+        <a class="btn btn-outline-light btn-sm" href="<?= e(url('logout')) ?>">Cerrar sesión</a>
+    </p>
 </section>

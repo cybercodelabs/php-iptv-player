@@ -17,6 +17,7 @@ $scripts = $scripts ?? [];
     <link rel="icon" href="<?= e(asset('img/favicon.ico')) ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= e(asset('css/app.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/layout/header.css')) ?>">
+    <link rel="stylesheet" href="<?= e(asset('css/search/modal.css')) ?>">
     <?php foreach ($styles as $style): ?>
         <link rel="stylesheet" href="<?= e(asset($style)) ?>">
     <?php endforeach; ?>
@@ -28,8 +29,10 @@ $scripts = $scripts ?? [];
     <?= $content ?>
 </main>
 
+<?php require templates_path('partials/search-modal.php'); ?>
 <?php require templates_path('partials/footer.php'); ?>
 
+<script src="<?= e(asset('js/search/modal.js')) ?>"></script>
 <script src="<?= e(asset('js/app.js')) ?>"></script>
 <?php foreach ($scripts as $script): ?>
     <script src="<?= e(asset($script)) ?>"></script>
