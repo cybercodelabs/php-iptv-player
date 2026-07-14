@@ -4,10 +4,10 @@
     role="dialog"
     aria-modal="true"
     aria-labelledby="searchModalTitle"
-    hidden
+    aria-hidden="true"
 >
     <div class="search-modal__backdrop" data-search-close tabindex="-1"></div>
-    <div class="search-modal__dialog">
+    <div class="search-modal__dialog" role="document">
         <div class="search-modal__header">
             <h2 class="search-modal__title" id="searchModalTitle">Buscar</h2>
             <button type="button" class="search-modal__close" data-search-close aria-label="Cerrar búsqueda">
@@ -33,14 +33,8 @@
             </div>
         </form>
 
-        <div class="search-modal__filters" role="tablist" aria-label="Filtrar resultados">
-            <button type="button" class="search-modal__filter is-active" data-filter="all" role="tab" aria-selected="true">Todo</button>
-            <button type="button" class="search-modal__filter" data-filter="movies" role="tab" aria-selected="false">Películas</button>
-            <button type="button" class="search-modal__filter" data-filter="series" role="tab" aria-selected="false">Series</button>
-        </div>
-
         <div class="search-modal__body" id="searchResults" aria-live="polite">
-            <p class="search-modal__hint">Escribe al menos 2 caracteres para buscar.</p>
+            <p class="search-modal__hint">Escribe al menos 2 caracteres para buscar en películas y series.</p>
         </div>
     </div>
 </div>

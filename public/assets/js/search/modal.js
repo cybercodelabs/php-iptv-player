@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('searchInput');
   const results = document.getElementById('searchResults');
   const form = document.getElementById('searchForm');
-  const filters = modal ? Array.from(modal.querySelectorAll('[data-filter]')) : [];
 
   if (!openBtn || !modal || !input || !results || !form) {
     return;
@@ -20,9 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let catalog = null;
   let loading = null;
-  let filter = 'all';
   let debounceId = null;
+  let closing = false;
   const RESULT_LIMIT = 40;
+  const ANIM_MS = 260;
 
   const normalize = (value) => value
     .toLowerCase()
@@ -36,18 +36,51 @@ document.addEventListener('DOMContentLoaded', () => {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 
+  const isOpen = () => modal.classList.contains('is-open');
+
   const openModal = async () => {
-    modal.hidden = false;
+    if (isOpen() || closing) {
+      return;
+    }
+
+    modal.classList.remove('is-closing');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('search-modal-open');
-    input.focus();
-    input.select();
-    await ensureCatalog();
-    runSearch();
+
+    // Doble frame para que el CSS anime desde el estado cerrado
+    modal.classList.add('is-opening');
+    void modal.offsetWidth;
+    modal.classList.remove('is-opening');
+    modal.classList.add('is-open');
+
+    window.requestAnimationFrame(() => {
+      input.focus();
+      input.select();
+    });
+
+    try {
+      await ensureCatalog();
+      runSearch();
+    } catch (_) {
+      // El error ya se muestra en results
+    }
   };
 
   const closeModal = () => {
-    modal.hidden = true;
+    if (!isOpen() || closing) {
+      return;
+    }
+
+    closing = true;
+    modal.classList.remove('is-open');
+    modal.classList.add('is-closing');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('search-modal-open');
+
+    window.setTimeout(() => {
+      modal.classList.remove('is-closing');
+      closing = false;
+    }, ANIM_MS);
   };
 
   const ensureCatalog = async () => {
@@ -102,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderResults = (items, query) => {
     if (normalize(query).length < 2) {
-      results.innerHTML = '<p class="search-modal__hint">Escribe al menos 2 caracteres para buscar.</p>';
+      results.innerHTML = '<p class="search-modal__hint">Escribe al menos 2 caracteres para buscar en películas y series.</p>';
       return;
     }
 
@@ -138,22 +171,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const query = input.value;
-    let items = [];
+    // Siempre películas + series
+    const items = []
+      .concat(matchItems(catalog.movies, query, 'Película'))
+      .concat(matchItems(catalog.series, query, 'Serie'))
+      .sort((a, b) => String(a.title).localeCompare(String(b.title), 'es'));
 
-    if (filter === 'all' || filter === 'movies') {
-      items = items.concat(matchItems(catalog.movies, query, 'Película'));
-    }
-    if (filter === 'all' || filter === 'series') {
-      items = items.concat(matchItems(catalog.series, query, 'Serie'));
-    }
-
-    // Orden simple por título; limita el total mostrado
-    items.sort((a, b) => String(a.title).localeCompare(String(b.title), 'es'));
     renderResults(items.slice(0, RESULT_LIMIT), query);
   };
 
   openBtn.addEventListener('click', () => {
-    openModal().catch(() => {});
+    openModal();
   });
 
   modal.querySelectorAll('[data-search-close]').forEach((el) => {
@@ -161,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !modal.hidden) {
+    if (event.key === 'Escape' && isOpen()) {
       closeModal();
     }
   });
@@ -174,17 +202,5 @@ document.addEventListener('DOMContentLoaded', () => {
   input.addEventListener('input', () => {
     window.clearTimeout(debounceId);
     debounceId = window.setTimeout(runSearch, 180);
-  });
-
-  filters.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filter = btn.getAttribute('data-filter') || 'all';
-      filters.forEach((item) => {
-        const active = item === btn;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-selected', active ? 'true' : 'false');
-      });
-      runSearch();
-    });
   });
 });
