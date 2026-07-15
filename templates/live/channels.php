@@ -63,7 +63,7 @@ $categoryUrl = static function (string $id): string {
                 <span class="tv-masthead__bars">
                     <i></i><i></i><i></i><i></i><i></i>
                 </span>
-                <span class="tv-masthead__signal-label">Señal IPTV</span>
+                <span class="tv-masthead__signal-label">Señal</span>
             </div>
         </header>
 

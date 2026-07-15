@@ -1,0 +1,154 @@
+/* Galería de previsualización de fondos (/backgrounds) */
+
+.bg-gallery {
+  padding: 1.75rem 0 2.5rem;
+}
+
+.bg-gallery__inner {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.bg-gallery__eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bg-gallery__title {
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.bg-gallery__lead {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.bg-gallery__lead code {
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.9em;
+}
+
+.bg-gallery__lead strong {
+  color: var(--accent);
+}
+
+.bg-gallery__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.15rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .bg-gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .bg-gallery__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.bg-gallery__item {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.bg-gallery__item.is-active {
+  border-color: rgba(229, 9, 20, 0.65);
+  box-shadow: 0 0 0 1px rgba(229, 9, 20, 0.25);
+}
+
+.bg-gallery__swatch {
+  position: relative;
+  isolation: isolate;
+  height: 11rem;
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 4px);
+  background: var(--bg);
+}
+
+/* En mosaicos pequeños el fondo fixed no aporta; forzar patrón local */
+.bg-gallery__swatch .app-atmosphere {
+  position: absolute;
+  background-attachment: scroll;
+}
+
+.bg-gallery__meta {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.bg-gallery__id {
+  flex: 0 0 auto;
+  min-width: 2rem;
+  height: 2rem;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 6px;
+  background: rgba(229, 9, 20, 0.15);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.bg-gallery__copy {
+  min-width: 0;
+}
+
+.bg-gallery__name {
+  margin: 0 0 0.15rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bg-gallery__hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.bg-gallery__badge {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bg-gallery__env {
+  margin: 0;
+}
+
+.bg-gallery__env code {
+  display: block;
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  background: #0a0a0a;
+  color: #d6d6d6;
+  font-size: 0.8rem;
+  overflow-x: auto;
+}

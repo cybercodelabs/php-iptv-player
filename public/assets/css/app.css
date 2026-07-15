@@ -47,12 +47,28 @@ button {
 }
 
 .app-body {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background:
-    radial-gradient(1200px 500px at 10% -10%, rgba(229, 9, 20, 0.12), transparent 55%),
-    var(--bg);
+  background: var(--bg);
+}
+
+/* Contenido por encima del fondo fijo (overlays / header fixed quedan fuera) */
+.app-body > :not(.app-atmosphere):not(.search-modal):not(.app-header) {
+  position: relative;
+  z-index: 1;
+}
+
+.app-body > .app-header {
+  position: fixed;
+  z-index: 40;
+}
+
+.app-body > .search-modal {
+  position: fixed;
+  z-index: 80;
 }
 
 .container {
@@ -62,6 +78,7 @@ button {
 
 .app-main {
   flex: 1;
+  padding-top: var(--header-h);
   padding-bottom: 2.5rem;
 }
 

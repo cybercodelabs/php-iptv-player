@@ -9,6 +9,13 @@ $appName = \App\Infrastructure\Config\Config::appName();
             <span><?= e($appName) ?></span>
         </a>
 
+        <nav class="app-header__nav" aria-label="Principal">
+            <a class="app-header__nav-link<?= e(nav_active('home')) ?>" href="<?= e(url('home')) ?>">Inicio</a>
+            <a class="app-header__nav-link<?= e(nav_active('channels', 'channel')) ?>" href="<?= e(url('channels')) ?>">TV en vivo</a>
+            <a class="app-header__nav-link<?= e(nav_active('movies', 'movie')) ?>" href="<?= e(url('movies')) ?>">Películas</a>
+            <a class="app-header__nav-link<?= e(nav_active('series', 'serie', 'episode')) ?>" href="<?= e(url('series')) ?>">Series</a>
+        </nav>
+
         <div class="app-header__actions">
             <button
                 type="button"

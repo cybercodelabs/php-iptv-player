@@ -1,4 +1,4 @@
-/* Secciones tipo carrusel / rieles con flechas estilo PLAYGO */
+/* Secciones tipo carrusel / rieles con flechas */
 
 .home-section {
   padding: 1.35rem 0 0.35rem;
@@ -51,7 +51,7 @@
   color: #fff;
 }
 
-/* Flechas tipo PLAYGO: absolutas a la derecha del título */
+/* Flechas absolutas a la derecha del título */
 .home-rail-nav {
   position: absolute;
   top: 50%;

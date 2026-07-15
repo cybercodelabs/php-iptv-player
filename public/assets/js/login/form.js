@@ -1,6 +1,5 @@
 /**
  * Validación del formulario de login, toggle de contraseña y modal de recuperación.
- * Adaptado del formulario PLAYGO (sin jQuery).
  */
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('loginForm');

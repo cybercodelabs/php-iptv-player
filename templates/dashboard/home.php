@@ -11,7 +11,6 @@ $popular = $popular ?? [];
 $movies = $movies ?? [];
 $series = $series ?? [];
 $catalogError = $catalogError ?? null;
-$homeBackground = \App\Infrastructure\Config\Config::homeBackground();
 
 $renderGrid = static function (array $items, string $emptyMessage): void {
     if ($items === []) {
@@ -28,8 +27,6 @@ $renderGrid = static function (array $items, string $emptyMessage): void {
 ?>
 
 <div class="home-page">
-    <div class="home-page__atmosphere home-page__atmosphere--<?= e($homeBackground) ?>" aria-hidden="true"></div>
-
 <section class="home-hero">
     <div class="container home-hero__inner">
         <div class="home-hero__copy">

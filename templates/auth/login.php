@@ -7,11 +7,6 @@ $errorTitle = $errorTitle ?? 'Ocurrió un error';
 ?>
 <div class="auth-page">
     <div class="overlay"></div>
-    <div class="auth-bg" aria-hidden="true">
-        <div class="bg-blob bg-blob-1"></div>
-        <div class="bg-blob bg-blob-2"></div>
-        <div class="bg-grid"></div>
-    </div>
 
     <div class="auth-wrapper">
         <main class="auth-card" aria-labelledby="auth-title">

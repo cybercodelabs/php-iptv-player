@@ -51,6 +51,38 @@ function e(?string $value): string
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+/**
+ * Segmento de ruta actual (ej. home, channels, movies) relativo a APP_URL.
+ */
+function current_route(): string
+{
+    $uri = $_SERVER['REQUEST_URI'] ?? '/';
+    $path = parse_url($uri, PHP_URL_PATH) ?: '/';
+    $appUrl = (string) Config::get('APP_URL', '');
+    $basePath = parse_url($appUrl, PHP_URL_PATH) ?: '';
+
+    if ($basePath !== '' && $basePath !== '/' && str_starts_with($path, $basePath)) {
+        $path = substr($path, strlen($basePath)) ?: '/';
+    }
+
+    $segment = trim($path, '/');
+    if ($segment === '') {
+        return 'home';
+    }
+
+    return explode('/', $segment)[0];
+}
+
+/**
+ * Clase CSS si la ruta actual coincide con alguno de los segmentos.
+ */
+function nav_active(string ...$routes): string
+{
+    $current = current_route();
+
+    return in_array($current, $routes, true) ? ' is-active' : '';
+}
+
 function redirect_if_guest(): void
 {
     if (!Session::isAuthenticated()) {

@@ -8,7 +8,7 @@ use App\Infrastructure\Xtream\XtreamClient;
 use Throwable;
 
 /**
- * Obtiene el catálogo del home desde Xtream (layout tipo PLAYGO).
+ * Obtiene el catálogo del home desde Xtream.
  */
 final class GetHomeCatalog
 {
@@ -40,7 +40,7 @@ final class GetHomeCatalog
         ];
 
         try {
-            // Como getMovies/getSeries de PLAYGO: mezclar el catálogo y tomar una muestra
+            // Mezclar el catálogo y tomar una muestra aleatoria
             $moviesRaw = $this->client->getVodStreams($username, $password);
             $seriesRaw = $this->client->getSeries($username, $password);
             shuffle($moviesRaw);

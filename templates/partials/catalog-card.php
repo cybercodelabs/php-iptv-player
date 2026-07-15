@@ -1,6 +1,6 @@
 <?php
 /**
- * Partial de tarjeta de catálogo (estilo PLAYGO).
+ * Partial de tarjeta de catálogo.
  *
  * @var array{title: string, year?: string|null, rating?: string|null, meta?: string, href: string, image: string|null, type: string} $item
  * @var bool $big

@@ -12,7 +12,7 @@ use App\Shared\Http\AuthMiddleware;
 use App\Shared\Layout\View;
 
 /**
- * Dashboard principal — layout inspirado en PLAYGO home.php.
+ * Dashboard principal.
  */
 final class HomeController
 {

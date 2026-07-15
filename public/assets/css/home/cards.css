@@ -1,4 +1,4 @@
-/* Tarjetas estilo PLAYGO */
+/* Tarjetas de catálogo */
 
 .catalog-card {
   display: flex;
@@ -8,9 +8,10 @@
   max-width: 100%;
 }
 
+/* Misma escala visual que el grid de Recomendaciones (~4 columnas) */
 .catalog-card--big {
-  width: 210px;
-  min-width: 210px;
+  width: 280px;
+  min-width: 280px;
 }
 
 .catalog-card__cover {
@@ -24,8 +25,9 @@
 }
 
 .catalog-card--big .catalog-card__cover {
-  height: 320px;
-  aspect-ratio: auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
 }
 
 .catalog-card__img {
@@ -128,22 +130,14 @@
 
 @media (min-width: 992px) {
   .catalog-card--big {
-    width: 230px;
-    min-width: 230px;
-  }
-
-  .catalog-card--big .catalog-card__cover {
-    height: 360px;
+    width: 290px;
+    min-width: 290px;
   }
 }
 
 @media (max-width: 640px) {
   .catalog-card--big {
-    width: 160px;
-    min-width: 160px;
-  }
-
-  .catalog-card--big .catalog-card__cover {
-    height: 240px;
+    width: 180px;
+    min-width: 180px;
   }
 }

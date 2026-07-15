@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Features\Auth\Presentation\LoginController;
 use App\Features\Auth\Presentation\LogoutController;
+use App\Features\Dashboard\Presentation\BackgroundsController;
 use App\Features\Dashboard\Presentation\HomeController;
 use App\Features\Live\Presentation\ChannelController;
 use App\Features\Live\Presentation\ChannelsController;
@@ -31,6 +32,7 @@ $router->post('/login', [$login, 'attempt']);
 $router->get('/logout', new LogoutController());
 
 $router->get('/home', new HomeController());
+$router->get('/backgrounds', new BackgroundsController());
 $router->get('/channels', new ChannelsController());
 $router->get('/channel', new ChannelController());
 $router->get('/movies', new MoviesController());

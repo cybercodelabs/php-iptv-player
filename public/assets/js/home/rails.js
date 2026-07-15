@@ -1,9 +1,8 @@
 /**
- * Carrusel Populares al estilo PLAYGO (Owl):
+ * Carrusel de Populares:
  * loop infinito, autoplay cada 2s, transición ~1.8s y arrastre con mouse.
  */
 document.addEventListener('DOMContentLoaded', () => {
-  // Misma cadencia que scripts/home/carousel.js de PLAYGO
   const AUTOPLAY_MS = 2000;
   const ANIMATION_MS = 1800;
   const SNAP_MS = 450;

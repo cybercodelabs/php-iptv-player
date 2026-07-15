@@ -1,25 +1,25 @@
 .app-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 40;
   height: var(--header-h);
-  background: rgba(12, 12, 12, 0.78);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .app-header__inner {
   height: var(--header-h);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: stretch;
   gap: 1rem;
 }
 
 .app-brand {
   display: inline-flex;
   align-items: center;
+  align-self: center;
   gap: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.03em;
@@ -35,15 +35,70 @@
   object-fit: contain;
 }
 
+.app-header__nav {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 0 0 0 2.75rem;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.app-header__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.app-header__nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 2.6rem;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.875rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.app-header__nav-link:last-child {
+  margin-right: 0;
+}
+
+.app-header__nav-link:hover {
+  color: #fff;
+}
+
+.app-header__nav-link.is-active {
+  color: #fff;
+}
+
+.app-header__nav-link.is-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
 .app-header__actions {
   display: flex;
   align-items: center;
+  align-self: center;
   gap: 0.25rem;
   flex-shrink: 0;
   margin-left: auto;
 }
 
-/* Iconos sin caja contenedora (estilo PLAYGO header__search / user) */
+/* Iconos de acción sin caja contenedora */
 .app-header__icon {
   appearance: none;
   width: 40px;
@@ -52,7 +107,7 @@
   border: none;
   border-radius: 0;
   background: transparent;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.9);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -68,4 +123,25 @@
 .app-header__icon svg {
   width: 22px;
   height: 22px;
+}
+
+@media (max-width: 920px) {
+  .app-header__nav {
+    margin-left: 1rem;
+  }
+
+  .app-header__nav-link {
+    margin-right: 1.35rem;
+    font-size: 0.8rem;
+  }
+
+  .app-brand span {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header__nav {
+    display: none;
+  }
 }

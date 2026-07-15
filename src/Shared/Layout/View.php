@@ -19,6 +19,7 @@ final class View
         $layoutData = array_merge($data, [
             'content' => $content,
             'appName' => Config::appName(),
+            'appBackground' => Config::homeBackground(),
         ]);
 
         echo self::capture($layout, $layoutData);
