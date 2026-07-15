@@ -36,6 +36,8 @@ final class Config
             'APP_LOCALE' => $_ENV['APP_LOCALE'] ?? 'es',
             'APP_TIMEZONE' => $_ENV['APP_TIMEZONE'] ?? 'UTC',
             'XTREAM_HOST' => rtrim($_ENV['XTREAM_HOST'] ?? '', '/'),
+            // Fondo de /home: 1..7 (ver hero.css)
+            'HOME_BACKGROUND' => $_ENV['HOME_BACKGROUND'] ?? '1',
         ];
 
         self::$loaded = true;
@@ -48,6 +50,17 @@ final class Config
         }
 
         return self::$values[$key] ?? $default;
+    }
+
+    /**
+     * Variante de fondo en /home (1–7).
+     */
+    public static function homeBackground(): string
+    {
+        $value = trim((string) self::get('HOME_BACKGROUND', '1'));
+        $allowed = ['1', '2', '3', '4', '5', '6', '7'];
+
+        return in_array($value, $allowed, true) ? $value : '1';
     }
 
     public static function appName(): string
