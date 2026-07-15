@@ -1,0 +1,199 @@
+/* Escenario / masthead de la guía de canales */
+
+.tv-page {
+  position: relative;
+  padding: 1.5rem 0 2.75rem;
+  isolation: isolate;
+}
+
+.tv-stage {
+  position: absolute;
+  inset: 0 0 auto;
+  height: min(420px, 52vh);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tv-stage__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.tv-stage__glow--a {
+  width: 420px;
+  height: 420px;
+  left: -8%;
+  top: -35%;
+  background: rgba(229, 9, 20, 0.28);
+}
+
+.tv-stage__glow--b {
+  width: 340px;
+  height: 340px;
+  right: -4%;
+  top: 10%;
+  background: rgba(80, 120, 255, 0.12);
+}
+
+.tv-stage__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, #000 20%, transparent 92%);
+}
+
+.tv-page__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.tv-masthead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+  padding: 1.35rem 1.4rem;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
+    rgba(12, 12, 12, 0.55);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+.tv-masthead__copy {
+  min-width: 0;
+  max-width: 42rem;
+}
+
+.tv-masthead__topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+  margin-bottom: 0.7rem;
+}
+
+.tv-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(229, 9, 20, 0.16);
+  border: 1px solid rgba(229, 9, 20, 0.4);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tv-live-pill__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.7);
+  animation: tv-pulse 1.6s ease-out infinite;
+}
+
+@keyframes tv-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(229, 9, 20, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0);
+  }
+}
+
+.tv-masthead__meta {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.88rem;
+}
+
+.tv-masthead__title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.8rem, 3.4vw, 2.55rem);
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.tv-masthead__subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.tv-masthead__signal {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.tv-masthead__bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 34px;
+}
+
+.tv-masthead__bars i {
+  display: block;
+  width: 5px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ff4d57, var(--accent));
+  animation: tv-bar 1.1s ease-in-out infinite;
+}
+
+.tv-masthead__bars i:nth-child(1) { height: 28%; animation-delay: 0s; }
+.tv-masthead__bars i:nth-child(2) { height: 52%; animation-delay: 0.12s; }
+.tv-masthead__bars i:nth-child(3) { height: 78%; animation-delay: 0.24s; }
+.tv-masthead__bars i:nth-child(4) { height: 46%; animation-delay: 0.36s; }
+.tv-masthead__bars i:nth-child(5) { height: 64%; animation-delay: 0.48s; }
+
+@keyframes tv-bar {
+  0%, 100% { transform: scaleY(0.55); opacity: 0.65; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+.tv-masthead__signal-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .tv-masthead__signal {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tv-live-pill__dot,
+  .tv-masthead__bars i {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .tv-masthead {
+    padding: 1.1rem 1rem;
+    border-radius: 18px;
+  }
+}

@@ -1,0 +1,115 @@
+/* Rail de categorías (desktop lateral / móvil horizontal) */
+
+.tv-shell {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.tv-rail {
+  min-width: 0;
+}
+
+.tv-rail__label {
+  display: none;
+  margin: 0 0 0.65rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tv-rail__nav {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding: 0.1rem 0 0.35rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tv-rail__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.tv-rail__item {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  max-width: 240px;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.tv-rail__item:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tv-rail__item.is-active {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.95), rgba(255, 70, 90, 0.75));
+  border-color: transparent;
+  box-shadow: 0 8px 22px rgba(229, 9, 20, 0.28);
+}
+
+.tv-rail__name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+@media (min-width: 960px) {
+  .tv-shell {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .tv-rail {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+    max-height: calc(100vh - var(--header-h) - 2rem);
+    overflow: auto;
+    padding: 0.85rem;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(18, 18, 18, 0.72);
+    backdrop-filter: blur(10px);
+    scrollbar-width: none;
+  }
+
+  .tv-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tv-rail__label {
+    display: block;
+  }
+
+  .tv-rail__nav {
+    flex-direction: column;
+    overflow: visible;
+    padding: 0;
+    gap: 0.3rem;
+  }
+
+  .tv-rail__item {
+    max-width: none;
+    width: 100%;
+    border-radius: 12px;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .tv-rail__item.is-active {
+    transform: translateX(2px);
+  }
+}
