@@ -69,7 +69,6 @@ $moviesUrl = static function (string $categoryId, int $pageNum = 1): string {
     <div class="container vod-page__inner">
         <header class="vod-hero">
             <div class="vod-hero__text">
-                <p class="vod-hero__kicker">Biblioteca VOD</p>
                 <h1 class="vod-hero__title">Películas</h1>
                 <p class="vod-hero__lead">
                     <?= e((string) $totalMovies) ?> títulos
