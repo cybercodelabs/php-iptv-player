@@ -130,6 +130,21 @@ final class XtreamClient
     }
 
     /**
+     * Detalle de serie (`info` + `episodes` por temporada).
+     *
+     * @return array<string, mixed>
+     */
+    public function getSeriesInfo(string $username, string $password, string|int $seriesId): array
+    {
+        $data = $this->request($username, $password, [
+            'action' => 'get_series_info',
+            'series_id' => $seriesId,
+        ]);
+
+        return is_array($data) ? $data : [];
+    }
+
+    /**
      * @param array<string, scalar|null> $query
      * @return array<string, mixed>|list<mixed>
      */

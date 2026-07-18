@@ -1,0 +1,5 @@
+/* Ajustes de ficha de serie sobre el layout de movie-details */
+
+.serie-details .movie-details__card {
+  margin-bottom: 2rem;
+}
