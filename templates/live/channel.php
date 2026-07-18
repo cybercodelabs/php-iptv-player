@@ -30,13 +30,8 @@ $detailError = $detailError ?? null;
                         ? $detailError
                         : 'Comprueba el enlace o vuelve a la guía.'
                 ) ?>
-                <p>
-                    <a class="channel-page__back" href="<?= e(url('channels')) ?>">← Volver a TV en vivo</a>
-                </p>
             </div>
         <?php else: ?>
-            <a class="channel-page__back" href="<?= e(url('channels')) ?>">← Volver a TV en vivo</a>
-
             <header class="channel-page__head">
                 <div class="channel-page__logo">
                     <?php if (!empty($channel['logo'])): ?>
@@ -70,12 +65,10 @@ $detailError = $detailError ?? null;
             <?php if ($playUrl): ?>
                 <section class="live-player" id="live-player" aria-label="Reproductor en vivo">
                     <video
-                        id="live-video"
-                        class="live-player__video"
+                        id="plyr-live"
                         playsinline
                         controls
-                        autoplay
-                        muted
+                        crossorigin
                         <?php if (!empty($channel['logo'])): ?>
                             poster="<?= e((string) $channel['logo']) ?>"
                         <?php endif; ?>

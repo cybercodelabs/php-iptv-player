@@ -1,5 +1,5 @@
 /**
- * Reproductor live: HLS.js local + HLS nativo (Safari / iOS).
+ * Reproductor live: Plyr CDN + HLS.js (Safari nativo cuando aplique).
  */
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.querySelector('[data-live-player]');
@@ -22,25 +22,44 @@ document.addEventListener('DOMContentLoaded', () => {
     hint.hidden = false;
   };
 
-  const tryPlay = () => {
-    const playPromise = video.play();
+  const plyrOptions = {
+    autoplay: true,
+    muted: true,
+    controls: [
+      'play-large',
+      'play',
+      'mute',
+      'volume',
+      'settings',
+      'pip',
+      'airplay',
+      'fullscreen',
+    ],
+    settings: ['quality'],
+    invertTime: false,
+  };
+
+  const initPlyr = () => {
+    if (typeof Plyr === 'undefined') {
+      return null;
+    }
+
+    const player = new Plyr(video, plyrOptions);
+    window.player = player;
+    return player;
+  };
+
+  const tryPlay = (player) => {
+    const target = player || video;
+    const playPromise = target.play();
     if (playPromise && typeof playPromise.catch === 'function') {
       playPromise.catch(() => {
-        // Autoplay bloqueado: el usuario puede pulsar play manualmente
+        // Autoplay bloqueado: el usuario puede pulsar play
       });
     }
   };
 
   const canNativeHls = video.canPlayType('application/vnd.apple.mpegurl') !== '';
-
-  if (canNativeHls && (typeof Hls === 'undefined' || !Hls.isSupported())) {
-    video.src = src;
-    video.addEventListener('loadedmetadata', tryPlay, { once: true });
-    video.addEventListener('error', () => {
-      showHint('No se pudo reproducir este canal. Prueba otro o recarga la página.');
-    });
-    return;
-  }
 
   if (typeof Hls !== 'undefined' && Hls.isSupported()) {
     const hls = new Hls({
@@ -55,8 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
     hls.loadSource(src);
     hls.attachMedia(video);
 
+    const player = initPlyr();
+
     hls.on(Hls.Events.MANIFEST_PARSED, () => {
-      tryPlay();
+      tryPlay(player);
     });
 
     hls.on(Hls.Events.ERROR, (_event, data) => {
@@ -85,7 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (canNativeHls) {
     video.src = src;
-    tryPlay();
+    const player = initPlyr();
+    video.addEventListener('loadedmetadata', () => tryPlay(player), { once: true });
+    video.addEventListener('error', () => {
+      showHint('No se pudo reproducir este canal. Prueba otro o recarga la página.');
+    });
     return;
   }
 

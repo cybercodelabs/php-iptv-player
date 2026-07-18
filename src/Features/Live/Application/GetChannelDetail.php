@@ -12,7 +12,7 @@ use Throwable;
  */
 final class GetChannelDetail
 {
-    private const RELATED_LIMIT = 12;
+    private const RELATED_LIMIT = 10;
     private const EPG_LIMIT = 5;
 
     public function __construct(

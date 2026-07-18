@@ -1,4 +1,4 @@
-/* Reproductor live HLS */
+/* Reproductor live: Plyr + HLS */
 
 .live-player {
   margin: 0 0 0.35rem;
@@ -10,13 +10,10 @@
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
-.live-player__video {
-  display: block;
+.live-player video,
+.live-player .plyr {
   width: 100%;
   max-width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
-  vertical-align: middle;
 }
 
 .live-player__hint {

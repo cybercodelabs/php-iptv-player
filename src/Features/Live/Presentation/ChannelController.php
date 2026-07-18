@@ -34,6 +34,12 @@ final class ChannelController
 
         View::render('live/channel', [
             'title' => $title,
+            'cdnStyles' => [
+                'https://cdn.plyr.io/3.7.8/plyr.css',
+            ],
+            'cdnScripts' => [
+                'https://cdn.plyr.io/3.7.8/plyr.polyfilled.js',
+            ],
             'styles' => [
                 'css/live/cards.css',
                 'css/live/channel.css',
