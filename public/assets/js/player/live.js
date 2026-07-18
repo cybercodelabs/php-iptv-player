@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const plyrOptions = {
     autoplay: true,
     muted: true,
+    ratio: '16:9',
     controls: [
       'play-large',
       'play',
