@@ -1,8 +1,8 @@
 /**
- * Catálogo de películas: centra el chip activo en el scroll horizontal.
+ * Catálogo VOD (películas / series): centra el chip activo en el scroll horizontal.
  */
 document.addEventListener('DOMContentLoaded', () => {
-  const root = document.querySelector('[data-movies-categories]');
+  const root = document.querySelector('[data-vod-categories]');
   if (!root) {
     return;
   }

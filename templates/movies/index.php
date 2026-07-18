@@ -86,7 +86,7 @@ $moviesUrl = static function (string $categoryId, int $pageNum = 1): string {
                 <?= e(\App\Infrastructure\Config\Config::get('APP_DEBUG') === 'true' ? $catalogError : 'Intenta recargar en unos segundos.') ?>
             </div>
         <?php else: ?>
-            <div class="vod-filters" data-movies-categories>
+            <div class="vod-filters" data-vod-categories>
                 <div class="vod-filters__bar">
                     <p class="vod-filters__label">Género</p>
                     <nav class="vod-filters__nav" aria-label="Géneros de películas">
