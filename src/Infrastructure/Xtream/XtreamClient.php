@@ -145,6 +145,38 @@ final class XtreamClient
     }
 
     /**
+     * EPG corto de un canal en vivo (`epg_listings`).
+     *
+     * @return list<array<string, mixed>>
+     */
+    public function getShortEpg(string $username, string $password, string|int $streamId, int $limit = 4): array
+    {
+        $data = $this->request($username, $password, [
+            'action' => 'get_short_epg',
+            'stream_id' => $streamId,
+            'limit' => $limit,
+        ]);
+
+        if ($data === []) {
+            return [];
+        }
+
+        $listings = $data['epg_listings'] ?? $data;
+        if (!is_array($listings)) {
+            return [];
+        }
+
+        if ($this->isList($listings)) {
+            /** @var list<array<string, mixed>> $list */
+            $list = array_values(array_filter($listings, 'is_array'));
+
+            return $list;
+        }
+
+        return [];
+    }
+
+    /**
      * @param array<string, scalar|null> $query
      * @return array<string, mixed>|list<mixed>
      */

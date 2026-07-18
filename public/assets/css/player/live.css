@@ -1,0 +1,33 @@
+/* Reproductor live HLS */
+
+.live-player {
+  margin: 0 0 0.35rem;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.live-player__video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  vertical-align: middle;
+}
+
+.live-player__hint {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(58, 18, 18, 0.95);
+  color: #ffb4b4;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.live-player__hint[hidden] {
+  display: none;
+}
