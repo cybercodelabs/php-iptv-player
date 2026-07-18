@@ -20,6 +20,7 @@ $appBackground = $appBackground ?? \App\Infrastructure\Config\Config::homeBackgr
     <link rel="stylesheet" href="<?= e(asset('css/app.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/layout/atmosphere.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/layout/header.css')) ?>">
+    <link rel="stylesheet" href="<?= e(asset('css/layout/footer.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/search/modal.css')) ?>">
     <?php foreach ($styles as $style): ?>
         <link rel="stylesheet" href="<?= e(asset($style)) ?>">
