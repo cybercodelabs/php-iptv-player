@@ -115,6 +115,21 @@ final class XtreamClient
     }
 
     /**
+     * Detalle de una película VOD (`info` + `movie_data`).
+     *
+     * @return array<string, mixed>
+     */
+    public function getVodInfo(string $username, string $password, string|int $vodId): array
+    {
+        $data = $this->request($username, $password, [
+            'action' => 'get_vod_info',
+            'vod_id' => $vodId,
+        ]);
+
+        return is_array($data) ? $data : [];
+    }
+
+    /**
      * @param array<string, scalar|null> $query
      * @return array<string, mixed>|list<mixed>
      */

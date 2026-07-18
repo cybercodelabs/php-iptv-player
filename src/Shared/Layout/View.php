@@ -16,10 +16,15 @@ final class View
     {
         $content = self::capture($template, $data);
 
-        $layoutData = array_merge($data, [
-            'content' => $content,
+        // Defaults primero; $data puede desactivar atmósfera u overridear fondo
+        $layoutData = array_merge([
             'appName' => Config::appName(),
             'appBackground' => Config::homeBackground(),
+            'showAtmosphere' => true,
+            'cdnStyles' => [],
+            'cdnScripts' => [],
+        ], $data, [
+            'content' => $content,
         ]);
 
         echo self::capture($layout, $layoutData);

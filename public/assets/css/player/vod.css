@@ -1,0 +1,12 @@
+/* Contenedor del reproductor VOD (Plyr CDN sin overrides de tema) */
+
+.movie-player {
+  margin: 1.25rem 0 0;
+  width: 100%;
+}
+
+.movie-player video,
+.movie-player .plyr {
+  width: 100%;
+  max-width: 100%;
+}

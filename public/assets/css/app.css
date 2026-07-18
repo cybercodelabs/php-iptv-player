@@ -56,7 +56,7 @@ button {
 }
 
 /* Contenido por encima del fondo fijo (overlays / header fixed quedan fuera) */
-.app-body > :not(.app-atmosphere):not(.search-modal):not(.app-header) {
+.app-body > :not(.app-atmosphere):not(.search-modal):not(.trailer-modal):not(.app-header) {
   position: relative;
   z-index: 1;
 }
@@ -69,6 +69,11 @@ button {
 .app-body > .search-modal {
   position: fixed;
   z-index: 80;
+}
+
+.app-body > .trailer-modal {
+  position: fixed;
+  z-index: 120;
 }
 
 .container {
