@@ -1,0 +1,66 @@
+/* Filtros de género — barra horizontal renovada */
+
+.vod-filters {
+  margin-bottom: 1.25rem;
+}
+
+.vod-filters__bar {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.vod-filters__label {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.vod-filters__nav {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding: 0.15rem 0 0.4rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.vod-filters__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.vod-chip {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  max-width: 220px;
+  padding: 0.52rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(12, 12, 12, 0.55);
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  backdrop-filter: blur(10px);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.vod-chip:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+.vod-chip.is-active {
+  color: #fff;
+  background: var(--accent);
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(229, 9, 20, 0.32);
+}

@@ -1,0 +1,102 @@
+/* Ambiente y cabecera renovada del catálogo */
+
+.vod-page {
+  position: relative;
+  padding: 1.35rem 0 3rem;
+  isolation: isolate;
+}
+
+.vod-ambient {
+  position: absolute;
+  inset: 0 0 auto;
+  height: min(360px, 42vh);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vod-ambient__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(56px);
+}
+
+.vod-ambient__orb--a {
+  width: 420px;
+  height: 420px;
+  left: -12%;
+  top: -48%;
+  background: rgba(229, 9, 20, 0.22);
+}
+
+.vod-ambient__orb--b {
+  width: 280px;
+  height: 280px;
+  right: 8%;
+  top: -10%;
+  background: rgba(255, 90, 40, 0.1);
+}
+
+.vod-ambient__noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.04), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 70%);
+  mask-image: linear-gradient(180deg, #000 10%, transparent 95%);
+}
+
+.vod-page__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.vod-hero {
+  margin-bottom: 1.35rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vod-hero__kicker {
+  margin: 0 0 0.4rem;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.vod-hero__title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.vod-hero__lead {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.95rem;
+}
+
+.vod-empty {
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.4rem 1.25rem;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.vod-empty strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .vod-page {
+    padding-top: 1rem;
+  }
+}

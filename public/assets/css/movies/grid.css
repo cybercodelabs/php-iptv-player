@@ -1,0 +1,112 @@
+/* Tablero de pósters — vista 5 × 4 */
+
+.vod-board {
+  min-width: 0;
+}
+
+.vod-board__toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+}
+
+.vod-board__heading {
+  min-width: 0;
+}
+
+.vod-board__title {
+  margin: 0 0 0.2rem;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+.vod-board__range {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.86rem;
+}
+
+.vod-board__page {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.84rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.vod-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem 0.85rem;
+}
+
+.vod-grid__cell {
+  min-width: 0;
+  animation: vod-rise 0.4s ease both;
+  animation-delay: calc(var(--i, 0) * 28ms);
+}
+
+.vod-grid .catalog-card__cover {
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.vod-grid .catalog-card:hover .catalog-card__cover {
+  transform: translateY(-4px);
+  border-color: rgba(229, 9, 20, 0.45);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
+}
+
+.vod-grid .catalog-card__title {
+  font-size: 0.9rem;
+}
+
+.vod-grid .catalog-card__rate {
+  font-size: 0.82rem;
+}
+
+@keyframes vod-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 560px) {
+  .vod-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem 1rem;
+  }
+}
+
+@media (min-width: 860px) {
+  .vod-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .vod-grid {
+    /* Vista objetivo: 5 columnas × 4 filas */
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.3rem 1.05rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vod-grid__cell {
+    animation: none;
+  }
+
+  .vod-grid .catalog-card__cover {
+    transition: none;
+  }
+}

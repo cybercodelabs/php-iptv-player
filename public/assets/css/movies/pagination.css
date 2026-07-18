@@ -1,0 +1,100 @@
+/* Controles de paginación del catálogo */
+
+.vod-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.vod-pager__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.65rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.vod-pager__btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.vod-pager__btn:hover:not(.is-disabled) {
+  background: rgba(229, 9, 20, 0.16);
+  border-color: rgba(229, 9, 20, 0.45);
+  transform: translateY(-1px);
+}
+
+.vod-pager__btn--next {
+  background: var(--accent);
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(229, 9, 20, 0.28);
+}
+
+.vod-pager__btn--next:hover:not(.is-disabled) {
+  background: var(--accent-hover, #f6121d);
+  box-shadow: 0 14px 28px rgba(229, 9, 20, 0.36);
+}
+
+.vod-pager__btn.is-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.vod-pager__pages {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.vod-pager__num {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 700;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.vod-pager__num:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.vod-pager__num.is-active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 560px) {
+  .vod-pager {
+    justify-content: center;
+  }
+
+  .vod-pager__pages {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.25rem;
+  }
+}

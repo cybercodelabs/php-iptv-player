@@ -95,6 +95,16 @@ final class XtreamClient
     }
 
     /**
+     * @return list<array<string, mixed>>
+     */
+    public function getVodCategories(string $username, string $password): array
+    {
+        return $this->listRequest($username, $password, [
+            'action' => 'get_vod_categories',
+        ]);
+    }
+
+    /**
      * @param array<string, scalar|null> $query
      * @return array<string, mixed>|list<mixed>
      */
