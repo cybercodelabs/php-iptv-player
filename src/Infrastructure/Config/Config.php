@@ -53,7 +53,7 @@ final class Config
     }
 
     /**
-     * Variante de fondo en /home (1–7).
+     * Variante de fondo global (1–7): home, login y resto de layouts con atmósfera.
      */
     public static function homeBackground(): string
     {

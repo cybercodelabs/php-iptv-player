@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" width="96" />
+  <img src="public/assets/img/favicon.png" alt="PHP IPTV Player" width="96" />
 </p>
 
 <h1 align="center">PHP IPTV Player</h1>

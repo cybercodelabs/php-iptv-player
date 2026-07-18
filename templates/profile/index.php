@@ -156,6 +156,7 @@ if ($initial === '') {
                             <a href="<?= e(url('movies')) ?>">Películas</a>
                             <a href="<?= e(url('series')) ?>">Series</a>
                             <a href="<?= e(url('channels')) ?>">TV en vivo</a>
+                            <a href="<?= e(url('backgrounds')) ?>">Fondos</a>
                         </dd>
                     </div>
                 </dl>

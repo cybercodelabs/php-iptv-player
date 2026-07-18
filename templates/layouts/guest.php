@@ -2,6 +2,8 @@
 /** @var string $content */
 /** @var string $appName */
 /** @var string $title */
+/** @var string $appBackground */
+$appBackground = $appBackground ?? \App\Infrastructure\Config\Config::homeBackground();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -11,6 +13,7 @@
     <meta name="theme-color" content="#e50914">
     <title><?= e(($title ?? 'Iniciar sesión') . ' · ' . $appName) ?></title>
     <link rel="icon" href="<?= e(asset('img/favicon.ico')) ?>" type="image/x-icon">
+    <link rel="stylesheet" href="<?= e(asset('css/layout/atmosphere.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/login/variables.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/login/base.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/login/background.css')) ?>">
@@ -23,7 +26,8 @@
     <link rel="stylesheet" href="<?= e(asset('css/login/modal.css')) ?>">
     <link rel="stylesheet" href="<?= e(asset('css/login/mobile.css')) ?>">
 </head>
-<body>
+<body class="auth-body">
+<div class="app-atmosphere app-atmosphere--<?= e($appBackground) ?>" aria-hidden="true"></div>
 <?= $content ?>
 <script src="<?= e(asset('js/login/form.js')) ?>"></script>
 </body>

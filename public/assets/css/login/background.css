@@ -13,9 +13,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(10, 10, 10, 0.45);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    /* Ligero velo para legibilidad del formulario sobre el patrón */
+    background: rgba(10, 10, 10, 0.28);
     z-index: 0;
     pointer-events: none;
 }
