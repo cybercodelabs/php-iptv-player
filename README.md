@@ -63,6 +63,10 @@ routes/          # Web routes
 - Composer 2.x
 - Apache (`mod_rewrite`) or equivalent PHP server
 
+## Deploy
+
+Production deploy (Ubuntu + Nginx): see [`deploy/`](deploy/README.md) → [Ubuntu + Nginx guide](deploy/ubuntu-nginx.md).
+
 ## Modules
 
 | Module | Status |
