@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="public/assets/img/favicon.png" alt="PHP IPTV Player" width="96" />
+  <img src="docs/screenshots/favicon.webp" alt="PHP IPTV Player" width="96" />
 </p>
 
 <h1 align="center">PHP IPTV Player</h1>
 
 <p align="center">
-  Cliente web IPTV ligero en PHP — implementación de referencia compatible con la API de Xtream UI.
+  Lightweight PHP IPTV web client — compatible with the Xtream UI API.
 </p>
 
 <p align="center">
@@ -13,6 +13,7 @@
   <img src="https://img.shields.io/badge/PHP-8.1%2B-777BB4?logo=php&logoColor=white" alt="PHP" />
   <img src="https://img.shields.io/badge/Composer-Guzzle%20%7C%20Dotenv-885630?logo=composer&logoColor=white" alt="Composer" />
   <img src="https://img.shields.io/badge/API-Xtream%20UI-e50914" alt="Xtream UI" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License MIT" /></a>
 </p>
 
 <p align="center">
@@ -23,75 +24,65 @@
 
 ---
 
-## Descripción
+## Description
 
-**PHP IPTV Player** es una demo / referencia para autenticar usuarios y consumir live TV, películas y series desde servidores compatibles con Xtream UI, sin base de datos ni arquitecturas complejas.
+**PHP IPTV Player** is a PHP IPTV web client in a **base version**, for authenticating users and consuming live TV, movies, and series from Xtream UI–compatible servers. No database and no complex infrastructure at this stage.
 
-> [!NOTE]
-> Versión inicial (demo). No pretende reemplazar una solución empresarial de producción.
+> [!WARNING]
+> It is a **web player / client**. It does not host or redistribute IPTV content: the catalog and streams are provided by the external server you configure (`XTREAM_HOST`).
 
-> [!IMPORTANT]
-> El document root del servidor debe apuntar a la carpeta `public/`.
+See [DISCLAIMER.md](DISCLAIMER.md) for more details.
 
-## Arquitectura
+## Preview
 
-Organización por features (`auth`, `live`, `movies`, `series`, `profile`, `player`) con capas presentation / dominio / infraestructura. Detalle en `.cursor/rules/architecture.mdc`.
+<p align="center">
+  <img src="docs/screenshots/screenshot_01.webp" alt="Preview — home / catalog" width="800" />
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/screenshot_02.webp" alt="Preview — playback" width="800" />
+</p>
+
+## Architecture
+
+Organized by features (`auth`, `live`, `movies`, `series`, `profile`, `player`) with presentation / domain / infrastructure layers.
 
 ```text
-public/          # Front controller y assets
-src/Features/    # Módulos de negocio
+public/          # Front controller and public assets
+src/Features/    # Business modules
 src/Shared/      # Layout, helpers, middleware
-src/Infrastructure/  # Config, sesión, cliente Xtream
-templates/       # Vistas PHP
-routes/          # Rutas web
+src/Infrastructure/  # Config, session, Xtream client
+templates/       # PHP views
+routes/          # Web routes
 ```
 
-## Requisitos
+## Requirements
 
 - PHP 8.1+
-- Extensiones: `curl`, `json`, `mbstring`, `session`
+- Extensions: `curl`, `json`, `mbstring`, `session`
 - Composer 2.x
-- Servidor Apache (mod_rewrite) o `php -S` para desarrollo
+- Apache (`mod_rewrite`) or equivalent PHP server
 
-## Instalación
+## Modules
 
-```bash
-git clone https://github.com/cybercodelabs/php-iptv-player.git
-cd php-iptv-player
-composer install
-cp .env.example .env
-```
-
-Edita `.env`:
-
-```env
-APP_URL=http://localhost/php-iptv-player/public
-XTREAM_HOST=http://tu-servidor-xtream:puerto
-```
-
-> [!TIP]
-> Con el servidor PHP embebido: `composer run serve` y abre `http://localhost:8080` (ajusta `APP_URL` a `http://localhost:8080`).
-
-### XAMPP / Apache
-
-1. Coloca el proyecto bajo `htdocs`.
-2. Apunta el virtual host o usa `http://localhost/php-iptv-player/public`.
-3. Si usas subdirectorio, descomenta `RewriteBase` en `public/.htaccess`.
-
-## Estado del esqueleto
-
-| Módulo | Estado |
+| Module | Status |
 |--------|--------|
-| Auth (login/logout + sesión) | Funcional (requiere `XTREAM_HOST`) |
-| Layout compartido | Funcional |
-| Dashboard / Live / Movies / Series / Profile | Placeholders |
-| Player | Stub |
+| Auth (login/logout + session) | Functional |
+| Shared layout | Functional |
+| Dashboard / Home | Functional |
+| Live TV (`/channels`, `/channel`) | Functional |
+| Movies / Series | Functional |
+| Search | Functional |
+| Profile | Functional |
+| Player (VOD + HLS live) | Functional |
 
-## Seguridad
+## Security
 
-- Credenciales en **sesión PHP** (HttpOnly), no en cookies en claro.
-- Secretos solo en `.env` (no versionado).
+- Credentials stored in a **PHP session** (HttpOnly), not in clear-text cookies.
+- Secrets only in `.env` (not committed).
 
-## Licencia
+## License
 
-MIT — ver repositorio.
+Released under the **MIT** license. See [LICENSE](LICENSE).
+
+Copyright (c) 2026 CyberCode Labs.
